@@ -1,20 +1,36 @@
 <template>
   <div class="container">
-    <div class="row">
-      <div class="col-sm" v-for="zone in zones" :key="zone.zone">
-        {{ getZoneName(zone.zone) }}, Volume {{ zone.vo }}, Source {{ zone.ch }}
-        <button v-on:click="updateWHAToggle(zone.zone, zone.mu, 'mu')">
+    <div class="card-deck mb-3 text-center">
+      <div class="card mb-4 shadow-sm" v-for="zone in zones" :key="zone.zone">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">{{ getZoneName(zone.zone) }}</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title">
+            <font-awesome-icon icon="microphone"/> {{ zone.vo }}</h1>
+          <h3><font-awesome-icon icon="play-circle"/> {{ zone.ch }}</h3>
+
+          <h3><button class="btn btn-lg btn-outline-primary"
+            v-on:click="updateWHAToggle(zone.zone, zone.mu, 'mu')">
           <font-awesome-icon icon="volume-mute"/></button>
-        <button v-on:click="updateWHAIncrement(zone.zone, zone.vo, 'vo', -1)">
+          <button class="btn btn-lg btn-outline-primary"
+            v-on:click="updateWHAIncrement(zone.zone, zone.vo, 'vo', -1)">
           <font-awesome-icon icon="volume-down"/></button>
-        <button v-on:click="updateWHAIncrement(zone.zone, zone.vo, 'vo', 1)">
+          <button class="btn btn-lg btn-outline-primary"
+            v-on:click="updateWHAIncrement(zone.zone, zone.vo, 'vo', 1)">
           <font-awesome-icon icon="volume-up"/></button>
-        <button v-on:click="updateWHAIncrement(zone.zone, zone.ch, 'ch', -1)">
+          </h3>
+          <h3><button class="btn btn-lg btn-outline-primary"
+            v-on:click="updateWHAIncrement(zone.zone, zone.ch, 'ch', -1)">
           <font-awesome-icon icon="step-backward"/></button>
-        <button v-on:click="updateWHAIncrement(zone.zone, zone.ch, 'ch', 1)">
+          <button class="btn btn-lg btn-outline-primary"
+            v-on:click="updateWHAIncrement(zone.zone, zone.ch, 'ch', 1)">
           <font-awesome-icon icon="step-forward"/></button>
-        <button v-on:click="updateWHAToggle(zone.zone, zone.pr, 'pr')">
-          <font-awesome-icon icon="power-off"/></button>
+          </h3>
+          <h3><button class="btn btn-lg btn-block btn-primary"
+           v-on:click="updateWHAToggle(zone.zone, zone.pr, 'pr')">
+          <font-awesome-icon icon="power-off"/></button></h3>
+        </div>
       </div>
     </div>
   </div>
@@ -30,7 +46,7 @@ export default {
     return {
       zones: [{ zone: '11-living' }, { zone: '12-office' }],
       zoneNames: [{ zone: 11, name: 'Living Room' }, { zone: 12, name: 'Office' }],
-      zoneNameMap: new Map([['11', 'Living Room'], ['12', 'Office']]),
+      zoneNameMap: new Map([['11', 'Den'], ['12', 'Office'], ['13', 'Living'], ['14', 'Dining'], ['15', 'Bed'], ['16', 'Bath']]),
     };
   },
   mounted() {
@@ -70,30 +86,26 @@ export default {
 
 </script>
 
-<style>
-
-
-h3 {
-  margin-top: 2rem;
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
 }
 
-.row {
-  margin-bottom: 1rem;
-}
-.row .row {
-  margin-top: 1rem;
-  margin-bottom: 0;
-}
-[class*="col-"] {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  background-color: rgba(86, 61, 124, .15);
-  border: 1px solid rgba(86, 61, 124, .2);
+.container {
+  max-width: 960px;
 }
 
-hr {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+.pricing-header {
+  max-width: 700px;
 }
 
+.card-deck .card {
+  min-width: 220px;
+}
 </style>
