@@ -7,12 +7,15 @@
         </div>
         <div class="card-body">
           <h1 class="card-title pricing-card-title">
-            <font-awesome-icon icon="microphone"/> {{ zone.vo }}</h1>
+            <font-awesome-icon v-if="zone.mu === '00'" icon="microphone"/>
+            <font-awesome-icon color="gray" v-if="zone.mu === '01'" icon="microphone-slash"/>
+          {{ zone.vo }}</h1>
           <h3><font-awesome-icon icon="play-circle"/> {{ zone.ch }}</h3>
 
           <h3><button class="btn btn-lg btn-outline-primary"
             v-on:click="updateWHAToggle(zone.zone, zone.mu, 'mu')">
-          <font-awesome-icon icon="volume-mute"/></button>
+          <font-awesome-icon  v-if="zone.mu === '00'" icon="volume-mute" />
+          <font-awesome-icon  v-if="zone.mu === '01'" icon="volume-off" /></button>
           <button class="btn btn-lg btn-outline-primary"
             v-on:click="updateWHAIncrement(zone.zone, zone.vo, 'vo', -1)">
           <font-awesome-icon icon="volume-down"/></button>
@@ -29,7 +32,8 @@
           </h3>
           <h3><button class="btn btn-lg btn-block btn-primary"
            v-on:click="updateWHAToggle(zone.zone, zone.pr, 'pr')">
-          <font-awesome-icon icon="power-off"/></button></h3>
+          <font-awesome-icon v-if="zone.pr === '00'" color="gray" icon="power-off"/>
+          <font-awesome-icon v-if="zone.pr === '01'" icon="power-off"/></button></h3>
         </div>
       </div>
     </div>
