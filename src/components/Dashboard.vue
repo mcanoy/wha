@@ -1,5 +1,4 @@
 <template>
-  <div class="container">
     <div class="card-deck mb-3 text-center">
       <div class="card mb-4 shadow-sm" v-for="zone in zones" :key="zone.zone">
         <div class="card-header">
@@ -37,7 +36,6 @@
         </div>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -111,5 +109,9 @@ html {
 
 .card-deck .card {
   min-width: 220px;
+}
+
+.margin-bottom {
+  .margin-top: 10px;
 }
 </style>
