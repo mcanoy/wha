@@ -1,6 +1,6 @@
 <template>
     <div class="card-deck mb-3 text-center">
-      <div class="card mb-4 shadow-sm" v-for="zone in zones" :key="zone.zone">
+      <div class="card mb-4 shadow-sm" v-for="zone in zones" :key="zone.zone" v-if="zone !== null">
         <div class="card-header">
           <h4 class="my-0 font-weight-normal">{{ getZoneName(zone.zone) }}</h4>
         </div>
@@ -57,7 +57,7 @@ export default {
   methods: {
     getZones() {
       const self = this;
-      axios.get(`${process.env.API_URL}/zones`)
+      axios.get(`${process.env.VUE_APP_API_URL}/zones`)
         .then((response) => {
           console.warn(response.data);
           self.zones = response.data;
@@ -78,7 +78,7 @@ export default {
       this.updateWHA(zone, setting, newVolume);
     },
     updateWHA(zone, setting, payload) {
-      axios.post(`${process.env.API_URL}/zones/${zone}/${setting}`, payload)
+      axios.post(`${process.env.VUE_APP_API_URL}/zones/${zone}/${setting}`, payload)
         .then(() => {
           this.getZones();
         });

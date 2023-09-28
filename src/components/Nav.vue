@@ -23,6 +23,11 @@ export default {
           text: 'Talk',
           page: '/google-home',
         },
+        {
+          id: 2,
+          text: 'Cube',
+          page: '/cube',
+        },
       ],
     };
   },
