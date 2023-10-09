@@ -1,28 +1,29 @@
 <template>
   <div>
-  <h2></h2>
-  <div class="card">
+    <h2></h2>
+    <div class="card">
       <div class="card-body">
-    <form @submit.prevent="onTalk">
-      <div class="form-group">
-        <input v-model="say"  class="form-control" aria-describedby="emailHelp" placeholder="Google Say This">
+        <form @submit.prevent="onTalk">
+          <div class="form-group mb-3">
+            <input v-model="say"  class="form-control" aria-describedby="emailHelp" placeholder="Google Say This">
+          </div>
+          <button type="submit" class="btn btn-primary btn-block w-100">Say</button>
+        </form>
       </div>
-      <button type="submit" class="btn btn-primary btn-block">Say</button>
-    </form>
-</div>
-  </div>
+    </div>
+    <p></p>
     <div class="card">
       <div class="card-header">
         Direct Hits
       </div>
       <div class="card-body">
-        <button type="button" class="btn btn-lg btn-outline-primary btn-block"
+        <button type="button" class="btn btn-lg btn-outline-primary btn-block w-25"
           v-on:click="nextGame('leafs')">Leafs</button>
-        <button type="button" class="btn btn-lg btn-outline-secondary btn-block"
+        <button type="button" class="btn btn-lg btn-outline-secondary btn-block w-25"
           v-on:click="nextGame('raptor')">Raptors</button>
-        <button type="button" class="btn btn-lg btn-outline-success btn-block"
+        <button type="button" class="btn btn-lg btn-outline-success btn-block w-25"
           v-on:click="nextGame('birthday')">Birthday</button>
-        <button type="button" class="btn btn-lg btn-outline-info btn-block"
+        <button type="button" class="btn btn-lg btn-outline-info btn-block w-25"
           v-on:click="ronSwanson()">Ron Wisdom</button>
       </div>
     </div>

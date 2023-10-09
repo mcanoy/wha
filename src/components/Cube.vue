@@ -1,7 +1,8 @@
 <template>
 <div class="container">
   <div class="row">
-    <div v-for="cube in cubes" :key="cube.name" class="card" :class="{'bg-info': cube.isMastered, 'text-white':cube.isMastered, 'mb-2': cube.isMastered}" style="width:185px">
+    <div v-for="cube in cubes" :key="cube.name" 
+      class="card mb-2" :class="{'bg-info': cube.isMastered, 'text-white':cube.isMastered}" style="width:155px">
       <img class="card-img-top"  v-bind:src="cube.img" :alt="cube.name"/>
       <h4 class="card-title">{{ cube.group }}</h4>
       <p class="card-text">{{ cube.algorithm }}</p>

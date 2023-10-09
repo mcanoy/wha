@@ -1,34 +1,24 @@
 <template>
-  <div id="app">
-    <div class="container">
-      <Nav></Nav>
-      <h2></h2>
-      <router-view/>
-    </div>
-  </div>
+  <nav class="navbar navbar-dark bg-primary" >
+    <router-link to="/" class="navbar-brand" style="margin-left: 10px">Speakers</router-link>
+    <router-link to="/google-home" class="navbar-brand">Talk</router-link>
+    <router-link to="/cube" class="navbar-brand">Cube</router-link>
+  </nav>
+  <router-view/>
 </template>
-
-<script>
-// eslint object-shorthand: [2, "never"]
-
-import Nav from './components/Nav';
-
-export default {
-  name: 'App',
-  components: {
-    Nav,
-  },
-};
-</script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 0px;
+  padding: 10px;
+}
+
+.router-link-exact-active{
+  font-weight: bold;
 }
 
 </style>

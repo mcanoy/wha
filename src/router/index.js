@@ -1,13 +1,9 @@
-import Vue from 'vue';
-import Router from 'vue-router';
-import Dashboard from '@/components/Dashboard';
-import GoogleHome from '@/components/GoogleHome';
-import Cube from '@/components/Cube';
+import { createRouter, createWebHashHistory } from 'vue-router'
+import Cube from '../components/Cube.vue'
+import Dashboard from '../components/Dashboard.vue'
+import GoogleHome from '../components/GoogleHome.vue'
 
-Vue.use(Router);
-
-export default new Router({
-  routes: [
+const routes = [
     {
       path: '/',
       name: 'Dashboard',
@@ -23,5 +19,11 @@ export default new Router({
       name: 'Cube',
       component: Cube,
     },
-  ],
-});
+  ]
+
+const router = createRouter({
+  history: createWebHashHistory(),
+  routes
+})
+
+export default router
