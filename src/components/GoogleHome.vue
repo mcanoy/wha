@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     googleTalk(phrase) {
-      axios.get(`${process.env.VUE_APP_API_URL}/google/talk?phrase=${phrase}`)
+      axios.get(`${process.env.VUE_APP_API_URL}/api/google/talk?text=${phrase}`)
         .catch((error) => {
           console.error(error);
         });
@@ -52,7 +52,9 @@ export default {
       this.googleTalk(this.say);
     },
     nextGame(game) {
-      axios.get(`${process.env.VUE_APP_API_URL}/next/${game}`)
+      const url = game == 'birthday' ? 'api/birthday' : `api/nhl/next/${game}`;
+
+      axios.get(`${process.env.VUE_APP_API_URL}/${url}`)
         .catch((error) => {
           console.error(error);
         });

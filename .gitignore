@@ -21,3 +21,4 @@ selenium-debug.log
 .env.local
 wha*.gz
 wha.tar
+home-pi-fe*

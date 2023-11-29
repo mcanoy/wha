@@ -68,8 +68,7 @@ export default {
       axios.get(`${process.env.VUE_APP_API_URL}/zones`)
         .then((response) => {
           console.warn(response.data);
-          //const notNullZones = [];
-          self.zones = response.data;
+          self.zones = response.data.filter(n => n);
         })
         .catch((error) => {
           console.error(error);
@@ -87,6 +86,7 @@ export default {
       this.updateWHA(zone, setting, newVolume);
     },
     updateWHA(zone, setting, payload) {
+      console.warn(`zone ${zone}, setting ${setting}, payload ${payload}`)
       axios.post(`${process.env.VUE_APP_API_URL}/zones/${zone}/${setting}`, payload)
         .then(() => {
           this.getZones();
