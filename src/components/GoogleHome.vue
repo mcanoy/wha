@@ -52,7 +52,7 @@ export default {
       this.googleTalk(this.say);
     },
     nextGame(game) {
-      const url = game == 'birthday' ? 'api/birthday' : `api/nhl/next/${game}`;
+      const url = game == 'birthday' ? 'api/birthday/next' : `api/nhl/next/${game}`;
 
       axios.get(`${process.env.VUE_APP_API_URL}/${url}`)
         .catch((error) => {
