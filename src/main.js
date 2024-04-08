@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import dayjs from 'dayjs'
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faVolumeUp, faVolumeDown, faVolumeOff, faStepForward, faStepBackward, faPowerOff, faVolumeMute, faMicrophone, faMicrophoneSlash, faPlayCircle } from '@fortawesome/free-solid-svg-icons';
@@ -19,4 +20,6 @@ library.add(faMicrophone);
 library.add(faMicrophoneSlash);
 library.add(faPlayCircle);
 
-createApp(App).use(router).component('font-awesome-icon', FontAwesomeIcon).mount('#app')
+const app = createApp(App).use(router).component('font-awesome-icon', FontAwesomeIcon);
+app.config.globalProperties.$dayjs = dayjs;
+app.mount('#app');

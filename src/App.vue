@@ -3,6 +3,7 @@
     <router-link to="/" class="navbar-brand" style="margin-left: 10px">Oll Cube</router-link>
     <router-link to="/pll" class="navbar-brand" style="margin-left: 10px">Pll Cube</router-link>
     <router-link to="/google-home" class="navbar-brand">Talk</router-link>
+    <router-link to="/baseball" class="navbar-brand">Baseball</router-link>
   </nav>
   <router-view/>
 </template>
