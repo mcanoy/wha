@@ -1,10 +1,10 @@
 <template>
   <div class="container-fluid">
     <div class="row m-2">
-      <div class="col"><button type="button" class="btn btn-primary" @click="refresh">Refresh Data</button></div>
+      <div class="col"><button type="button" class="btn btn-primary btn-sm btn-success" @click="refresh">Refresh Data</button></div>
       <div id="divisions" class="col">
         <div class="form-check form-check-inline" v-for="division in divisionList" v-bind:key="division">
-          <input class="form-check-input" type="checkbox" v-model="division.enabled" :value="division.enabled" @change="handleCheckboxChange">
+          <input class="form-check-input " type="checkbox" v-model="division.enabled" :value="division.enabled" @change="handleCheckboxChange">
           <label class="form-check-label" for="${division.name}">{{ division.name }}</label>
         </div>
       </div>
@@ -47,11 +47,11 @@ export default {
         mustang: []
       },
       tableHeight: {
-        'pinto-8': '380px',
-        mustang: '540px',
+        'pinto-8': '310px',
+        mustang: '440px',
       },
       divisions: [''],
-      divisionList: [{ name: 'shetland', enabled: false }, { name: 'mustang', enabled: true }, { name: 'pinto-7', enabled: true }, { name: 'pinto-8', enabled: false }],
+      divisionList: [{ name: 'shetland', enabled: false }, { name: 'pinto-7', enabled: true }, { name: 'pinto-8', enabled: false }, { name: 'mustang', enabled: true }, { name: 'bronco', enabled: true }],
       team: 'Blue Jays (McAnoy)'
     };
   },

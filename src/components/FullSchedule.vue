@@ -15,7 +15,7 @@
       <tbody>
         <tr v-for="game in schedule" v-bind:key="game.team" :class="{ 'table-active': isSelectedTeam(game.home) || isSelectedTeam(game.away) }">
           <td class="text-start d-lg-none">{{ displayDateSmall(game.date, game.time) }}</td>
-          <td :class="{ 'table-primary': isHomeWinner(game), 'table-info': isTied(game), 'table-danger': isHomeLoser(game)}">{{ shortTeamName(game.home) }}</td>
+          <td :class="{ 'table-primary': isHomeWinner(game), 'table-info': isTied(game), 'table-danger': isHomeLoser(game)}"><RouterLink :to="`/baseball/${division}/${game.home}`">{{ shortTeamName(game.home) }}</RouterLink></td>
           <td :class="{ 'table-primary': isHomeWinner(game), 'table-info': isTied(game), 'table-danger': isHomeLoser(game) }">{{ game.homeScore }}</td>
           <td :class="{ 'table-primary': isAwayWinner(game), 'table-info': isTied(game), 'table-danger': isAwayLoser(game) }">{{ shortTeamName(game.away) }}</td>
           <td :class="{ 'table-primary': isAwayWinner(game), 'table-info': isTied(game), 'table-danger': isAwayLoser(game) }">{{ game.awayScore }}</td>
@@ -25,9 +25,9 @@
     </table>
   </div>
   <div class="col d-none d-lg-block">
-  <h3>  {{ properDivision() }} Schedule</h3>
-    <table class="table table-hover">
-      <thead>
+    <h3>  {{ properDivision() }} Schedule</h3>
+    <table class="table table-hover table-bordered table-sm">
+      <thead class=" table-success">
         <tr>
           <th scope="col" class="text-start ">Date</th>
           <th scope="col">Home</th>
@@ -40,9 +40,9 @@
       <tbody>
         <tr v-for="game in schedule" v-bind:key="game.team" :class="{ 'table-active': isSelectedTeam(game.home) || isSelectedTeam(game.away) }">
           <td class="text-start">{{ displayDate(game.date, game.time) }}</td>
-          <td :class="{ 'table-primary': isHomeWinner(game), 'table-info': isTied(game), 'table-danger': isHomeLoser(game)}">{{ shortTeamName(game.home) }}</td>
+          <td :class="{ 'table-primary': isHomeWinner(game), 'table-info': isTied(game), 'table-danger': isHomeLoser(game)}"><RouterLink class="text-dark" :to="`/baseball/${division}/${game.home}`">{{ shortTeamName(game.home) }}</RouterLink></td>
           <td :class="{ 'table-primary': isHomeWinner(game), 'table-info': isTied(game), 'table-danger': isHomeLoser(game) }">{{ game.homeScore }}</td>
-          <td :class="{ 'table-primary': isAwayWinner(game), 'table-info': isTied(game), 'table-danger': isAwayLoser(game) }">{{ shortTeamName(game.away) }}</td>
+          <td :class="{ 'table-primary': isAwayWinner(game), 'table-info': isTied(game), 'table-danger': isAwayLoser(game) }"><RouterLink class="text-dark" :to="`/baseball/${division}/${game.home}`">{{ shortTeamName(game.away) }}</RouterLink></td>
           <td :class="{ 'table-primary': isAwayWinner(game), 'table-info': isTied(game), 'table-danger': isAwayLoser(game) }">{{ game.awayScore }}</td>
           <td>{{ shortField(game.location) }}</td>
         </tr>
@@ -64,16 +64,16 @@ export default {
       return utils.properDivision(this.division);
     },
     isHomeWinner(game) {
-      return game.homeScore > game.awayScore;
+      return utils.getWinner(game) == "H";
     },
     isAwayWinner(game) {
-      return game.homeScore < game.awayScore;
+      return utils.getWinner(game) == "A";
     },
     isHomeLoser(game) {
-      return game.homeScore < game.awayScore;
+      return utils.getWinner(game) == "A";
     },
     isAwayLoser(game) {
-      return game.homeScore > game.awayScore;
+      return utils.getWinner(game) == "H"
     },
     isTied(game) {
       return game.homeScore && game.homeScore == game.awayScore;
@@ -99,3 +99,8 @@ export default {
   },
 }
 </script>
+<style scoped>
+a { 
+  text-decoration: none;
+}
+</style>

@@ -2,8 +2,8 @@
   <div class="col">
     <h3>{{ properDivision() }} {{ shortTeamName(team) }} Schedule</h3>
     <div class="panel-body table-responsive">
-    <table class="table table-hover">
-      <thead>
+    <table class="table table-hover table-bordered border-dark table-sm">
+      <thead class="table-success">
         <tr>
           <th scope="col">Date</th>
           <th scope="col">Opponent</th>

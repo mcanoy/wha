@@ -1,5 +1,29 @@
 import dayjs from 'dayjs';
 
+function getWinner(game) {
+      
+  if(!game.homeScore) {
+    return '--';
+  }
+
+  const homeScore = Number(game.homeScore);
+  const awayScore = Number(game.awayScore);
+
+  if(homeScore == awayScore) {
+    return 'T';
+  }
+
+  if(homeScore > awayScore) {
+    return "H"
+  }
+
+  if(homeScore < awayScore) {
+    return "A"
+  }
+
+  return '?';
+}
+
 function getDate(game) {
   const gameDay = dayjs().year() + `/${game.date.split(" ")[1]} ${game.time}`;
   return dayjs(gameDay, "YYYY/M/D h:mm A")
@@ -28,7 +52,7 @@ function sortSchedule(gameA, gameB) {
   const a = dayjs(gameAString, "YYYY/M/D h:mm A")
   const b = dayjs(gameBString, "YYYY/M/D h:mm A")
 
-  const now = dayjs();
+  const now = dayjs().subtract(3, 'day');
 
   //both past
   if(now.isAfter(a) && now.isAfter(b)) {
@@ -46,4 +70,4 @@ function sortSchedule(gameA, gameB) {
 }
 
 
-export default { sortSchedule, getDate, shortTeamName, properDivision, filterScheduleByTeam }
+export default { sortSchedule, getDate, shortTeamName, properDivision, filterScheduleByTeam, getWinner }
