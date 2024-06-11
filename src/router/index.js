@@ -1,8 +1,9 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import Cube from '../components/Cube.vue'
-import Pll from '../components/Pll.vue'
+import Cube from '@/components/Cube.vue'
+import Pll from '@/components/Pll.vue'
 import Baseball from '@/components/Baseball.vue'
-import GoogleHome from '../components/GoogleHome.vue'
+import Stats from '@/components/Stats.vue'
+import GoogleHome from '@/components/GoogleHome.vue'
 
 const routes = [
     {
@@ -25,6 +26,14 @@ const routes = [
       name: 'Baseball',
       component: Baseball,
       props: true
+    },
+    {
+      path: '/stats/team/:season?/:division?',
+      name: 'Stats',
+      component: Stats,
+      props: true,
+      alias: ['/stats/player/:player?', '/stats/game/:gamedate?/division/:division?', '/stats/games/:gamedate?/division/:division?'],
+
     },
   ]
 
