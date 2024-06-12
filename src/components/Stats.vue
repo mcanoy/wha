@@ -80,7 +80,7 @@ export default {
 
       this.hitting.forEach((hitsy) => {
         if(hitsy.season == season && hitsy.division == division) {
-          if(["season", "division"].includes(sortKey)) {
+          if(["season", "division", "opponent", "result", "gamedate", "player"].includes(sortKey)) {
             hitsy.players.sort((a,b) => {
               if(this.reverse) {
                 return b[sortKey].localeCompare(a[sortKey]);

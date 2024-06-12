@@ -1,12 +1,11 @@
 <template>
-  <div class="container-fluid">
     <div class="col m-2">
       <h3> {{ season }} {{ division }} <span v-if="this.$parent.type == 'game'">{{ totalHitting.gamedate }}</span> </h3>
       <div class="">
         <table class="table table-hover table-sm table-striped">
           <thead class="table-success">
             <tr>
-              <th v-for="column in getColumns()" :colspan="column.span" scope="col" :key="column.name">
+              <th class="text-nowrap" v-for="column in getColumns()" :colspan="column.span" scope="col" :key="column.name">
                 {{  column.display }}
                 <a :href="this.$route.query.page" v-on:click="sortBy(column.name, season, division)" :class="{active: sorter == column.name}"><font-awesome-icon icon="sort" style="color: green" size="xs"/></a>
               </th>
@@ -16,7 +15,7 @@
             <tr v-for="stat in hitting" :key="stat.id">
               <th scope="row"><RouterLink :to="`/stats/team/`">{{ stat.season }}</RouterLink></th>
               <td><RouterLink :to="`/stats/games/${stat.season}/division/${stat.division}`">{{ stat.division }}</RouterLink></td>
-              <td v-if="showColumn('player')"><RouterLink :to="`/stats/player/${stat.player}`">{{  stat.player }}</RouterLink></td>
+              <td class="text-nowrap" v-if="showColumn('player')"><RouterLink :to="`/stats/player/${stat.player}`">{{  stat.player }}</RouterLink></td>
               <td v-if="showColumn('gameDate')"><RouterLink :to="`/stats/game/${stat.gamedate}/division/${stat.division}`">{{  stat.gamedate }}</RouterLink></td>
               <td v-if="showColumn('opponent')">{{  stat.opponent }}</td>
               <td v-if="showColumn('result')">{{ formatResult(stat) }}</td>
@@ -44,7 +43,7 @@
             <tr>
               <th scope="row">{{ totalHitting.season }}</th>
               <td>{{ totalHitting.division }}</td>
-              <td v-if="showColumn('player')">{{ formatPlayerFooter(totalHitting.player) }} </td>
+              <td v-if="showColumn('player')" class="text-nowrap">{{ formatPlayerFooter(totalHitting.player) }} </td>
               <td v-if="showColumn('gameDate')">{{ totalHitting.games > 0 ? `${totalHitting.games} games` : "" }} </td>
               <td v-if="showColumn('games')">{{ totalHitting.games }}</td>
               <td v-if="showColumn('opponent')"></td>
@@ -70,7 +69,6 @@
         </table>
       </div>
     </div>
-  </div>
 </template>
 <script>
 
