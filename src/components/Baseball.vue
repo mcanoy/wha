@@ -7,7 +7,7 @@
           <input class="form-check-input " type="checkbox" v-model="division.enabled" :value="division.enabled" @change="handleCheckboxChange">
           <label class="form-check-label" for="${division.name}">{{ division.name }}</label>
         </div>
-      </div>
+      </div>     
     </div>
 
     <div class="row" v-for="division in divisions" v-bind:key="division">
@@ -119,7 +119,6 @@ export default {
     const divisions = this.$route.params.division.split('+').filter((div) => div != '');
     if(divisions.length == 0) {
       divisions.push("mustang");
-      divisions.push("pinto-8");
     }
 
     this.divisionList.forEach((div) => {

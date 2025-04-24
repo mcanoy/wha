@@ -41,6 +41,10 @@ function properDivision(division) {
   return division[0].toUpperCase() + division.slice(1);
 }
 
+function encodeSlash(text) {
+  return text.replace(/\//g, "%2F");
+}
+
 function filterScheduleByTeam(sked, team) {
   return sked.filter((game) => game.home == team || game.away == team);
 }
@@ -70,4 +74,4 @@ function sortSchedule(gameA, gameB) {
 }
 
 
-export default { sortSchedule, getDate, shortTeamName, properDivision, filterScheduleByTeam, getWinner }
+export default { sortSchedule, getDate, shortTeamName, properDivision, filterScheduleByTeam, getWinner, encodeSlash }

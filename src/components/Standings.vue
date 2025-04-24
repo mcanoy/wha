@@ -19,7 +19,7 @@
         <tbody>
           <tr v-for="team in standings" :key="team.team" :class="{ 'table-active': team.team == selectTeam  }">
             <th scope="row">{{ team.place }}</th>
-            <td><RouterLink :to="`/baseball/${division}/${team.team}`">{{ team.team }}</RouterLink></td>
+            <td><RouterLink :to="`/baseball/${division}/${teamScheduleUrl(team.team)}`">{{ team.team }}</RouterLink></td>
             <td>{{ team.wins }}</td>
             <td>{{ team.losses }}</td>
             <td>{{ team.ties }}</td>
@@ -49,7 +49,7 @@
         <tbody>
           <tr v-for="team in standings" :key="team.team" :class="{ 'table-active': team.team == selectTeam  }">
             <th scope="row">{{ team.place }}</th>
-            <td><RouterLink :to="`/baseball/${division}/${team.team}`">{{ team.team }}</RouterLink></td>
+            <td><RouterLink :to="`/baseball/${division}/${teamScheduleUrl(team.team)}`">{{ team.team }}</RouterLink></td>
             <td>{{ team.wins }}</td>
             <td>{{ team.losses }}</td>
             <td>{{ team.ties }}</td>
@@ -76,6 +76,9 @@ export default {
     properDivision() {
       return utils.properDivision(this.division);
     },
+    teamScheduleUrl(team) {
+      return utils.encodeSlash(team);
+    }
   }
 }
 </script>

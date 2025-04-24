@@ -1,5 +1,5 @@
 <template>
-  <div class="col">
+  <div class="col m-2">
     <h3>{{ properDivision() }} {{ shortTeamName(team) }} Schedule</h3>
     <div class="panel-body table-responsive">
     <table class="table table-hover table-bordered border-dark table-sm">
